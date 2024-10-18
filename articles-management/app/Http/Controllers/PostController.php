@@ -33,7 +33,7 @@ class PostController extends Controller
     {
         $data = request()->all();
         $post = Post::create($data);
-        return view('posts.create')->with('success', 'post created successfully');
+        return to_route('posts.show', $post)->with('success', 'post created successfully');
     }
 
     /**
@@ -41,7 +41,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view("posts.show", compact("post"));
     }
 
     /**
