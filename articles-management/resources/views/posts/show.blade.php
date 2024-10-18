@@ -10,6 +10,6 @@ view a post
         <h5 class="card-title bold">Tiltle : {{$post->title}}</h5>
         <h5 class="card-title">Content : </h5><p class="card-text">{{$post->content}}</p></h5>
         <p>Created At :{{$post->created_at}}</p>
-        <a href="{{route('posts.create')}}" class='btn btn-info'> Add New Post </a>
+        <a href="{{route('posts.index')}}" class='btn btn-info'> All Posts </a>
     </div>
 @endsection
