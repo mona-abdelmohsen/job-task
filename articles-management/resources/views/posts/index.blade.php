@@ -14,6 +14,7 @@
                 <th>Title</th> 
                 <th>Content</th> 
                 <th>Created At</th>
+                <th>Num of Comments</th>
                 <th> Actions </th>
         </tr>  
  
@@ -23,7 +24,7 @@
                         <td>{{$post['title']}}</td>
                         <td>{{$post['content']}}</td>
                         <td>{{ $post->created_at }}</td>
- 
+                        <td>{{$post->count_comments}}</td>
                         <td><a href="{{route('posts.show', $post)}}" class='btn btn-info'> show </a> 
                         <a href="{{route('posts.edit', $post)}}" class='btn btn-primary'> Edit </a></td>
                         <td>

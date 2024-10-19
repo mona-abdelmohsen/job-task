@@ -14,7 +14,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(5); 
+        $posts = Post::with('comments')->paginate(5); 
+        // $count_comments = $posts->comments->count();
+        foreach ($posts as $post) {
+            $post->count_comments = $post->comments->count();
+        }
         return view('posts.index', compact('posts'));
     }
 
@@ -41,6 +45,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        $posts = $post->with('comments');
         return view("posts.show", compact("post"));
     }
 
