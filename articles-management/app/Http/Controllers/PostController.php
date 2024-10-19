@@ -12,10 +12,13 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function __construct()
+    {
+        $this->middleware("auth")->only('store', 'destroy');
+    }
     public function index()
     {
-        $posts = Post::with('comments')->paginate(5); 
-        // $count_comments = $posts->comments->count();
+        $posts = Post::with('comments')->paginate(5);
         foreach ($posts as $post) {
             $post->count_comments = $post->comments->count();
         }
