@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Validation\Rule;
 class UpdatePostRequest extends FormRequest
 {
     /**
@@ -11,7 +11,7 @@ class UpdatePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,19 @@ class UpdatePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
-        ];
-    }
+                //
+                'title' => ['min:3', 'string', Rule::unique('posts')],
+                'content' => ['min:10', 'string'],
+            ];
+        }
+    
+        public function messages(): array
+        {
+            return [
+                //
+                'title.min' => 'title must be more than 3 characters',
+                'title.unique' => 'title must be unique',
+                'content.min' => 'content must be more than 10 characters',
+            ];
+        }
 }

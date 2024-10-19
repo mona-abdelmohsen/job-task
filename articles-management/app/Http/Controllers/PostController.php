@@ -51,6 +51,7 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         //
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -58,7 +59,9 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $data = request()->all();
+        $post->update($data);
+        return to_route('posts.show', $post);
     }
 
     /**
