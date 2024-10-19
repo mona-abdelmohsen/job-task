@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('age')->unsigned()->nullable()->check('age >= 18');
+            $table->integer('age')->unsigned()->check('age >= 18');
         });
     }
 
