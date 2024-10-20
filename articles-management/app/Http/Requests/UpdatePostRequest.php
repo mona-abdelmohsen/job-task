@@ -23,7 +23,7 @@ class UpdatePostRequest extends FormRequest
     {
         return [
                 //
-                'title' => ['min:3', 'string', Rule::unique('posts')],
+                'title' => ['min:3', 'string'],
                 'content' => ['min:10', 'string'],
             ];
         }
@@ -33,7 +33,6 @@ class UpdatePostRequest extends FormRequest
             return [
                 //
                 'title.min' => 'title must be more than 3 characters',
-                'title.unique' => 'title must be unique',
                 'content.min' => 'content must be more than 10 characters',
             ];
         }

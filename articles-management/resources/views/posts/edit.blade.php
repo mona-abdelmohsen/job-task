@@ -22,7 +22,7 @@ Edit post
             <label for="floatingTextarea2">Content </label>
             <div class="form-floating">
                 <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
-                    style="height: 100px" name="description">{{$post->content}}</textarea>
+                    style="height: 100px" name="content">{{$post->content}}</textarea>
             </div>
             @error('content')
                 <div class="alert alert-danger">{{ $message }}</div>
